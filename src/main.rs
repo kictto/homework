@@ -53,21 +53,21 @@ fn normal_bubble_sort_example() {
     println!("After  Sort : {:?}", a);
 }
 
-#[derive(Debug)]
+#[derive(Debug, Eq)]
 struct User {
-    userName: String,
-    signUpTimestamp: u64,
+    user_name: String,
+    sign_up_timestamp: u64,
 }
 
 impl PartialEq<Self> for User {
     fn eq(&self, other: &Self) -> bool {
-        self.signUpTimestamp.eq(&other.signUpTimestamp)
+        self.sign_up_timestamp.eq(&other.sign_up_timestamp)
     }
 }
 
 impl PartialOrd for User {
     fn partial_cmp(&self, other: &Self) -> Option<Ordering> {
-        Some(self.signUpTimestamp.cmp(&other.signUpTimestamp))
+        Some(self.sign_up_timestamp.cmp(&other.sign_up_timestamp))
     }
 }
 
@@ -75,8 +75,8 @@ fn normal_bubble_sort_example2() {
     let mut a = Vec::new();
     for i in 0..3 {
         a.push(User {
-            userName: format!("User-{}", i),
-            signUpTimestamp: rand::thread_rng().gen_range(1..=100),
+            user_name: format!("User-{}", i),
+            sign_up_timestamp: rand::thread_rng().gen_range(1..=100),
         });
     }
     println!("Before Sort : {:#?}", a);
@@ -90,11 +90,11 @@ fn main() {
     i32_sort_example();
     println!("============= i32Sort end.");
 
-    println!("Normal Sort:");
+    println!("PartialOrd Sort:");
     normal_bubble_sort_example();
-    println!("============= Normal Sort end.");
+    println!("============= PartialOrd Sort end.");
 
-    println!("Normal Sort 2:");
+    println!("PartialOrd Struct Sort :");
     normal_bubble_sort_example2();
-    println!("============= Normal Sort 2 end.");
+    println!("============= PartialOrd Struct Sort end.");
 }
