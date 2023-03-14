@@ -1,3 +1,5 @@
+use rand::Rng;
+
 fn i32_bubble_sort(array: &mut Vec<i32>) {
     let mut i = 0usize;
     while i < array.len() {
@@ -13,20 +15,13 @@ fn i32_bubble_sort(array: &mut Vec<i32>) {
 }
 
 fn i32_sort() {
-    let mut a = vec![1, 2, 3, 4, 5, 6];
-    let mut b = vec![6, 5, 4, 3, 2, 1];
-    let mut c = vec![1, 6, 2, 5, 5, 3, 4, 6];
-    println!("Before Sort a:{:?}", a);
+    let mut a = Vec::new();
+    for _ in 0..10 {
+        a.push(rand::thread_rng().gen_range(1..=100));
+    }
+    println!("Before Sort :{:?}", a);
     i32_bubble_sort(&mut a);
-    println!("After  Sort a:{:?}", a);
-
-    println!("Before Sort b:{:?}", b);
-    i32_bubble_sort(&mut b);
-    println!("After  Sort b:{:?}", b);
-
-    println!("Before Sort c:{:?}", c);
-    i32_bubble_sort(&mut c);
-    println!("After  Sort c:{:?}", c);
+    println!("After  Sort :{:?}", a);
 }
 
 fn main() {
