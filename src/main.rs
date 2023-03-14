@@ -20,9 +20,9 @@ fn i32_sort_example() {
     for _ in 0..20 {
         a.push(rand::thread_rng().gen_range(1..=100));
     }
-    println!("Before Sort :{:?}", a);
+    println!("Before Sort : {:?}", a);
     i32_bubble_sort(&mut a);
-    println!("After  Sort :{:?}", a);
+    println!("After  Sort : {:?}", a);
 }
 /// 基于 PartialOrd 的通用冒泡排序
 fn normal_bubble_sort<T: PartialOrd>(array: &mut Vec<T>) {
@@ -44,9 +44,9 @@ fn normal_bubble_sort_example() {
     for _ in 0..20 {
         a.push(rand::thread_rng().gen_range(1..=100));
     }
-    println!("Before Sort :{:?}", a);
+    println!("Before Sort : {:?}", a);
     normal_bubble_sort(&mut a);
-    println!("After  Sort :{:?}", a);
+    println!("After  Sort : {:?}", a);
 }
 
 fn main() {
