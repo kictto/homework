@@ -1,3 +1,4 @@
+use std::cmp::Ordering;
 use rand::Rng;
 
 fn i32_bubble_sort(array: &mut Vec<i32>) {
@@ -29,8 +30,8 @@ fn normal_bubble_sort<T: PartialOrd>(array: &mut Vec<T>) {
     while i < array.len() {
         let mut j = i + 1;
         while j < array.len() {
-            if array[i] > array[j] {
-                array.swap(i,j);
+            if array[i].partial_cmp(&array[j]) == Some(Ordering::Greater) {
+                array.swap(i, j);
             }
             j += 1;
         }
@@ -38,7 +39,7 @@ fn normal_bubble_sort<T: PartialOrd>(array: &mut Vec<T>) {
     }
 }
 
-fn normal_bubble_sort_example(){
+fn normal_bubble_sort_example() {
     let mut a = Vec::new();
     for _ in 0..10 {
         a.push(rand::thread_rng().gen_range(1..=100));
