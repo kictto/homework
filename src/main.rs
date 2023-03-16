@@ -3,16 +3,13 @@ use rand::Rng;
 
 /// i32的冒泡排序
 fn i32_bubble_sort(array: &mut Vec<i32>) {
-    let mut i = 0usize;
-    while i < array.len() {
-        let mut j = i + 1;
-        while j < array.len() {
+    // let mut i = 0usize;
+    for i in 0..array.len() {
+        for j in i+1..array.len(){
             if array[i] > array[j] {
                 (array[i], array[j]) = (array[j], array[i]);
             }
-            j += 1;
         }
-        i += 1;
     }
 }
 
@@ -29,16 +26,12 @@ fn i32_sort_example() {
 
 /// 基于 PartialOrd 的通用冒泡排序
 fn normal_bubble_sort<T: PartialOrd>(array: &mut Vec<T>) {
-    let mut i = 0usize;
-    while i < array.len() {
-        let mut j = i + 1;
-        while j < array.len() {
+    for i in 0..array.len(){
+        for j in i+1..array.len(){
             if array[i].partial_cmp(&array[j]) == Some(Ordering::Greater) {
                 array.swap(i, j);
             }
-            j += 1;
         }
-        i += 1;
     }
 }
 
