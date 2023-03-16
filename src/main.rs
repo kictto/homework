@@ -3,7 +3,6 @@ use rand::Rng;
 
 /// i32的冒泡排序
 fn i32_bubble_sort(array: &mut Vec<i32>) {
-    // let mut i = 0usize;
     for i in 0..array.len() {
         for j in i+1..array.len(){
             if array[i] > array[j] {
