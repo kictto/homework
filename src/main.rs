@@ -1,23 +1,33 @@
 use std::cmp::Ordering;
 use rand::Rng;
 
-/// i32的冒泡排序
-fn i32_bubble_sort(array: &mut Vec<i32>) {
+/// i32的选择排序
+fn i32_sort_selection(array: &mut Vec<i32>) {
     for i in 0..array.len() {
         for j in i + 1..array.len() {
             if array[i] > array[j] {
-                println!(">>> {:?}", array);
                 (array[i], array[j]) = (array[j], array[i]);
             }
         }
     }
 }
-
-fn i32_bubble_sort2(array: &mut Vec<i32>) {
+/// i32的选择排序2
+fn i32_sort_selection_2(array: &mut Vec<i32>){
+    for i in 0..array.len()-1 {
+        let mut min = i;
+        for j in i + 1..array.len() {
+            if array[min] > array[j] {
+                min = j;
+            }
+        }
+        (array[i], array[min]) = (array[min], array[i]);
+    }
+}
+/// i32的冒泡排序
+fn i32_bubble_sort(array: &mut Vec<i32>) {
     for i in 0..array.len() - 1 {
         for j in 0..array.len() - 1 - i {
             if array[j] > array[j + 1] {
-                println!(">>> {:?}", array);
                 (array[j], array[j + 1]) = (array[j + 1], array[j]);
             }
         }
@@ -27,11 +37,11 @@ fn i32_bubble_sort2(array: &mut Vec<i32>) {
 /// i32 冒泡排序示例
 fn i32_sort_example() {
     let mut a = Vec::new();
-    for _ in 0..50 {
+    for _ in 0..20 {
         a.push(rand::thread_rng().gen_range(1..=100));
     }
     println!("Before Sort : {:?}", a);
-    i32_bubble_sort2(&mut a);
+    i32_bubble_sort(&mut a);
     println!("After  Sort : {:?}", a);
 }
 
